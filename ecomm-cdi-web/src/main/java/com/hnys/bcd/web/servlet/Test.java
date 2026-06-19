@@ -14,8 +14,8 @@ import java.io.IOException;
 @WebServlet(value = "/test",loadOnStartup = 1)
 public class Test extends HttpServlet {
 
-//    @EJB
-//    private AppSetting appSetting;
+    @EJB
+    private AppSetting appSetting;
 
     @Inject
     private MyApp myApp;
@@ -33,7 +33,7 @@ public class Test extends HttpServlet {
         req.getSession();
         myApp.doSomething();
 
-//        resp.getWriter().write("App Name: "+appSetting.getName());
+        resp.getWriter().write("App Name: "+appSetting.getName());
 
     }
 }
