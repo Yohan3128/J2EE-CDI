@@ -2,6 +2,7 @@ package com.hnys.bcd.web.servlet;
 
 import com.hnys.bcd.ejb.remote.AppSetting;
 import jakarta.ejb.EJB;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,8 +14,11 @@ import java.io.IOException;
 @WebServlet(value = "/test",loadOnStartup = 1)
 public class Test extends HttpServlet {
 
-    @EJB
-    private AppSetting appSetting;
+//    @EJB
+//    private AppSetting appSetting;
+
+    @Inject
+    private MyApp myApp;
 
     @Override
     public void init() throws ServletException {
@@ -26,7 +30,10 @@ public class Test extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         resp.getWriter().write("Ecomm Web Module Test <br>");
 
-        resp.getWriter().write("App Name: "+appSetting.getName());
+        req.getSession();
+        myApp.doSomething();
+
+//        resp.getWriter().write("App Name: "+appSetting.getName());
 
     }
 }
